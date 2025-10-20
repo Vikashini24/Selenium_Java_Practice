@@ -18,7 +18,7 @@ public class StaticDropdown {
 		
 		Select dropdown = new Select(currency);
 		dropdown.selectByValue("USD");
-		dropdown.getFirstSelectedOption();
+		System.out.println(dropdown.getFirstSelectedOption().getText());
 		
 		driver.quit();
 		
