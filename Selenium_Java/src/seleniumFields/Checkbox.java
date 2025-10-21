@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 
 public class Checkbox {
 
@@ -20,9 +21,11 @@ public class Checkbox {
 		WebElement friendsCheckbox = driver.findElement(By.id("ctl00_mainContent_chk_friendsandfamily"));
 		friendsCheckbox.click();
 		System.out.println(friendsCheckbox.isSelected());
+		Assert.assertTrue(friendsCheckbox.isSelected());
 		
 		List<WebElement> checkboxSize = driver.findElements(By.xpath("//input[@type='checkbox']"));
 		System.out.println("Size of checkbox: " + checkboxSize.size());
+		Assert.assertEquals(checkboxSize.size(), 6);
 		
 		driver.quit();
 		
