@@ -1,13 +1,14 @@
 package seleniumFields;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class DynamicDropdown {
+public class AutosuggestiveDropdown {
 
 	public static void main(String[] args) {
 		
@@ -16,11 +17,14 @@ public class DynamicDropdown {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 		driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
 		
-		WebElement departureCity = driver.findElement(By.id("ctl00_mainContent_ddl_originStation1_CTXT"));
-		departureCity.click();
-		driver.findElement(By.xpath("//a[@value='CJB']")).click();
-		driver.findElement(By.xpath("//div[@id='ctl00_mainContent_ddl_destinationStation1_CTNR']//a[@value='BLR']")).click();
-		
+		driver.findElement(By.id("autosuggest")).sendKeys("ind");
+		List<WebElement> dropdowns = driver.findElements(By.xpath("//ul[@id='ui-id-1']/li"));
+		for (WebElement dropdown : dropdowns) {
+			if(dropdown.getText().equalsIgnoreCase("india")) {
+				dropdown.click();
+				break;
+			}
+		}
 		driver.quit();
 		
 	}
