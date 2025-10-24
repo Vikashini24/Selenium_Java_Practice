@@ -58,7 +58,11 @@ public class ImplicitExplicitAssignment {
 		Assert.assertTrue(checkbox.isSelected());
 		driver.findElement(By.id("signInBtn")).click();
 		
+		long startTime = System.currentTimeMillis();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".col-lg-9")));
+		long endTime = System.currentTimeMillis();
+		System.out.println("Time taken: " + (endTime-startTime)/1000 + "s");
+		
 		List<WebElement> addButtons = driver.findElements(By.xpath("//button[text()='Add ']"));
 		for (WebElement addButton : addButtons) {
 			addButton.click();
