@@ -25,6 +25,8 @@ public class Frames {
 		Actions action = new Actions(driver);
 		action.dragAndDrop(dragable, dropable).build().perform();
 		
+		driver.switchTo().defaultContent();
+		
 		driver.quit();
 		
 	}
